@@ -1,28 +1,55 @@
 class ListaOrdenada:
 
-  def __init__(self):
-    self.lista = []
+  def __init__(self, capacidade):
+    self.lista = [None] * capacidade
+    self._tamanho = 0
+    
+  
+  def esta_cheia(self):
+    return self.tamanho() == len(self.lista)
+    
 
   def tamanho(self):
-    return len(self.lista)
+    return self._tamanho
   
-  def inserir(self, cpf, nome, telefone, senha):
+  
+  def buscar_binaria_para_inserir(self, cpf):
     inicio = 0
     fim = len(self.lista) - 1
 
-    if self.tamanho() == 0:
-      self.lista.append((cpf, nome, telefone, senha))
-    elif cpf < self.lista[inicio][0]:
-      self.lista.insert(inicio, (cpf, nome, telefone, senha))
-    else:
-      while inicio < fim:
-        meio = (inicio + fim) // 2
-        if cpf < self.lista[meio][0]:
-          fim = meio - 1
-        else:
-          inicio = meio + 1
-      self.lista.insert(inicio + 1, (cpf, nome, telefone, senha))
+    while inicio < fim:
+      meio = (inicio + fim) // 2
+      if (self.lista[meio] == None):
+        fim = meio - 1
+      elif cpf < self.lista[meio][0]:
+        fim = meio - 1
+      else:
+        inicio = meio + 1
 
+    return inicio
+  
+  
+  def inserir(self, cpf, nome, telefone, senha):
+     
+    if self.esta_cheia():
+      raise Exception('A lista está cheia')
+    
+    if self.tamanho() == 0:
+      self.lista[self.tamanho()] = (cpf, nome, telefone, senha)
+      self._tamanho += 1    
+    else:
+      posicao = None
+      if cpf < self.lista[0][0]:
+        posicao = 0
+      else:
+        posicao = self.buscar_binaria_para_inserir(cpf)
+        
+      for i in range(posicao, self.tamanho()):     
+        self.lista[i+1] = self.lista[i]
+      
+      self.lista[posicao] = (cpf, nome, telefone, senha)
+      self._tamanho += 1
+    
 
   def buscar_sequencial(self, cpf):
     if cpf < self.lista[0][0] or cpf > self.lista[-1][0]:
