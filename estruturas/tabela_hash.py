@@ -52,5 +52,4 @@ class TabelaHash:
 
 
   def buscar(self, cpf):
-    indice = self.gerador_hash(cpf)
-    return self.valores[indice]
+    return self.valores[self.gerador_hash(cpf)]

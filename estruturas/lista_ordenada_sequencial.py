@@ -27,7 +27,7 @@ class ListaOrdenadaSequencial:
   
   def inserir(self, cpf, telefone, nome, senha):
     
-    pessoa = (cpf, telefone, nome)
+    pessoa = (cpf, telefone, nome, senha)
     
     if self.esta_cheia():
       raise Exception("A lista está cheia")
