@@ -54,13 +54,3 @@ class TabelaHash:
   def buscar(self, cpf):
     indice = self.gerador_hash(cpf)
     return self.valores[indice]
-  
-
-  def __str__(self):
-    pessoas = []
-    for i in range(self.capacidade):
-      if self.chaves[i] is not None:
-        pessoa = self.valores[i]
-        pessoas.append(f"CPF: {pessoa[0]}, Nome: {pessoa[1]}, Telefone: {pessoa[2]}, Senha: {pessoa[3]}")
-    return "\n".join(pessoas)
-  
