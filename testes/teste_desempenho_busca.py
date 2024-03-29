@@ -75,5 +75,5 @@ def teste_desempenho_busca():
     print(teste_hash.buscar(cpf_busca))
     print(f"Tempo de busca em tabela hash: {tempo_hash:.7f} segundos")
     
-    print("-" * 50)
+    print("=" * 50)
     
