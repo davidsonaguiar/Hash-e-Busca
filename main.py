@@ -1,3 +1,5 @@
 from testes.teste_desempenho_busca import teste_desempenho_busca
+from testes.teste_desempenho_inserir import teste_desempenho_inserir
 
 teste_desempenho_busca()
+teste_desempenho_inserir()
