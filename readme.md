@@ -499,7 +499,7 @@ def teste_desempenho_inserir():
 
     - Teste com 100.000 registros: 129.218243s
 
-    - Teste com 1.000.000 registros: 1.350400s
+    - Teste com 1.000.000 registros: + 1h
 
   - Inserção Binária:
 
